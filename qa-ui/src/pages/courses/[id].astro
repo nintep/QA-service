@@ -1,0 +1,10 @@
+---
+import Layout from "../../layout/Layout.astro";
+import CoursePage from "../../components/CoursePage/CoursePage.svelte";
+
+const id = Astro.params.id;
+---
+
+<Layout>
+    <CoursePage client:only={"svelte"} id={id} />
+</Layout>
