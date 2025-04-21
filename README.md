@@ -1,30 +1,42 @@
-# Designing and Building Scalable Web Applications / Course Project II Template
+# QA service
+*A fullstack project created for the Designing and Building Scalable Web Applications course* 
 
 ## Project description
 
 The project contains an application for a question-answer service that can be used for various courses. Using the application, the users can post questions and answers for specific courses as well as upvote posted questions and answers. Additionally, answers are automatically generated when users post new questions. 
 
-The application is divided into two main parts: qa-api and qa-ui.
+The application is divided into two main parts: qa-api and qa-ui. The project also contains an llm-api for automatically generating answers to user's questions. The llm-api was provided by the course, and not set up by me.
+
+### Tools used
+
+The project uses the following tools:
+- Docker Compose for handling backend and frontend systems in multiple containers
+- Deno and PostgreSQL for managing the backend (qa-api)
+- Flyway for database migrations
+- k6 to test API performance
+- NGINX for load balancing
+- Astro,  Svelte, and Tailwind CSS for building the frontend application
+- Playwright for end-to-end testing
 
 ### qa-api
 
-qa-api is the backend of the application, which manages information stored and generated on the server. It has the following properties:
+The qa-api is the backend of the application, which manages information stored and generated on the server. It has the following properties:
 
-Database:
-qa-api manages the storage of courses, questions, answers and information about upvotes. This information is stored in a PostgreSQL database, with which the api communicates using a database service. Test data is loaded into the database when the first request is made to the 
+- Database:
+qa-api manages the storage of courses, questions, answers and information about upvotes. This information is stored in a PostgreSQL database, with which the api communicates using a database service. Test data is loaded into the database when the first request is made to the api.
 
-Llm-api:
-When new questions are posted, qa-api asynchronically requests 3 automatically generated answers from a separate api, the llm-api. After receiving these answers, the api stores them in the database.
+- Llm-api:
+When new questions are posted, qa-api asynchronically requests 3 automatically generated answers from a separate api, the llm-api. After receiving these answers, qa-api stores them in the database.
 
-Server-sent events:
+- Server-sent events:
 When users are viewing course or question pages, new questions and answers get automatically added to the page without reloading, if other users post this content while the user is viewing the relevant page. This functionality is implemented as server-sent events.
 
-Limiting submissions:
+- Limiting submissions:
 One user can only submit a question or answer once every 60 seconds. The api keeps track of when users have made submissions, and rejects a submission if it is made too soon.
 
 ### qa-ui
 
-qa-ui manages the webpages the user uses to interact with the application. It has the following pages:
+The qa-ui manages the webpages the user uses to interact with the application. The qa-ui has the following pages:
 
 - Main page:
 Lists available courses and provides links to individual course pages.
@@ -43,9 +55,7 @@ Design decisions / general functionality:
 
 ### Project confiqurations
 
-The project has both a development and a production configuration. Currently, the production confiquration for qa-ui users a copy of the development dockerfile, as the UI uses server side rendering, the project configuration of which was not covered in the course materials. Use the development dockerfile was agreed with a teaching assistant.
-
-The project does not have a Kubernetes configuration. I attempted to make one, but the course materials only provided an example for a very simple, one-image application, and I did not have enough time to research this on my own.
+The project has both a development and a production configuration. Currently, the production confiquration for qa-ui users a copy of the development dockerfile, as the UI uses server side rendering, the production configuration of which presented some difficulties.
 
 ## Running
 
