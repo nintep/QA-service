@@ -1,6 +1,6 @@
-# Simply Astro starter kit for the Course Project II UI
+# QA-UI
 
-The starter kit is an Astro application with Svelte and Tailwind.
+The qa-ui is an Astro application with Svelte and Tailwind.
 Before starting to work on the project, run `npm install` to create
 `package-lock.json` and to download dependencies to `node_modules`.
 

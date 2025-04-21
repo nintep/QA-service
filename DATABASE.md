@@ -9,7 +9,7 @@ user_id, the question table based on the id of the course the questions belong t
 which question they belong to. These indexes were created as they correspond to common database 
 use cases for this application.
 
-The test data should be loaded to the database automatically, but it can also be reset by accessing 
+The test data is loaded to the database automatically, but it can also be reset by accessing 
 http://localhost:7800/api/init
 
 # Database schema

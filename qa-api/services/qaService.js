@@ -10,12 +10,6 @@ const clearAll = async () => {
 }
 
 //Courses
-/* 
-TABLE courses (
-	id SERIAL PRIMARY KEY,
-	name TEXT NOT NULL
-);
- */
 
 const findCourse = async (id) => {
     return await sql`SELECT * FROM courses WHERE id = ${id};`;
@@ -31,17 +25,6 @@ const addCourse = async (course) => {
 }
 
 //Questions
-
-/* 
-TABLE questions (
-	id SERIAL PRIMARY KEY,
-	course_id INTEGER REFERENCES courses(id),
-	question_text TEXT NOT NULL,
-	user_uuid TEXT NOT NULL,
-	upvotes INTEGER NOT NULL DEFAULT 0,
-	last_updated TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-); 
-*/
 
 const findQuestion = async (id) => {
     return await sql`SELECT * FROM questions WHERE id = ${id};`;
@@ -74,16 +57,6 @@ const addQuestion = async (question) => {
 }
 
 //Answers
-/* 
-TABLE answers (
-	id SERIAL PRIMARY KEY,
-	question_id INTEGER REFERENCES questions(id),
-	answer_text TEXT NOT NULL,
-	user_uuid TEXT NOT NULL,
-	upvotes INTEGER NOT NULL DEFAULT 0,
-	last_updated TIMESTAMP WITH TIME ZONE DEFAULT NOW()	
-);
- */
 
 const findAnswer = async (id) => {
     return await sql`SELECT * FROM answers WHERE id = ${id};`;
@@ -116,21 +89,6 @@ const addAnswer = async (answer) => {
 }
 
 //upvotes
-/* 
-TABLE question_upvotes (
-	question_id INTEGER REFERENCES questions(id),
-	user_uuid TEXT NOT NULL,
-	upvote_time TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-	PRIMARY KEY (answer_id, user_uuid)	
-);
-
-TABLE answer_upvotes (
-	answer_id INTEGER REFERENCES answers(id),
-	user_uuid TEXT NOT NULL,
-	upvote_time TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-	PRIMARY KEY (answer_id, user_uuid)
-);
-*/
 
 const upvoteQuestion = async (id, userId) => {
 
