@@ -1,5 +1,5 @@
 # QA service
-*A fullstack project created for the Designing and Building Scalable Web Applications course* 
+*A fullstack project created for the Designing and Building Scalable Web Applications course.* 
 
 ## Project description
 
@@ -15,7 +15,7 @@ The project uses the following tools:
 - Flyway for database migrations
 - k6 to test API performance
 - NGINX for load balancing
-- Astro,  Svelte, and Tailwind CSS for building the frontend application
+- Astro, Svelte, and Tailwind CSS for building the frontend application (qa-ui)
 - Playwright for end-to-end testing
 
 ### qa-api
